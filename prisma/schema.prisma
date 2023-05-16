@@ -1,0 +1,41 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator erd {
+  provider = "prisma-erd-generator"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = "mysql://root:mypass@localhost:3306/vehicle-db"
+}
+
+model Veiculo {
+  id          String        @id @default(uuid())
+  placa       String        @default("") @db.VarChar(7)
+  rastrado    Boolean       @default(false)
+  comprimento Float         @default(00.00)
+  largura     Float         @default(00.00)
+  altura      Float         @default(00.00)
+  cubagem     Float         @default(0000.00)
+  created_at  DateTime      @default(now())
+  FotoVeiculo FotoVeiculo[]
+
+  @@map("veiculo")
+}
+
+model FotoVeiculo {
+  id String @id @default(uuid())
+
+  image      Bytes
+  created_at DateTime @default(now())
+
+  veiculoId String
+  veiculo   Veiculo @relation(fields: [veiculoId], references: [id])
+
+  @@map("fotoVeiculo")
+}
