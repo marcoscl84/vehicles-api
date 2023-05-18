@@ -15,27 +15,27 @@ datasource db {
 }
 
 model Veiculo {
-  id          String        @id @default(uuid())
+  id          Int           @id @default(autoincrement())
   placa       String        @default("") @db.VarChar(7)
   rastrado    Boolean       @default(false)
   comprimento Float         @default(00.00)
   largura     Float         @default(00.00)
   altura      Float         @default(00.00)
   cubagem     Float         @default(0000.00)
-  created_at  DateTime      @default(now())
+  created_at  DateTime
   FotoVeiculo FotoVeiculo[]
 
   @@map("veiculo")
 }
 
 model FotoVeiculo {
-  id String @id @default(uuid())
+  id Int @id @default(autoincrement())
 
-  image      Bytes
-  created_at DateTime @default(now())
+  file       Bytes
+  created_at DateTime
 
-  veiculoId String
-  veiculo   Veiculo @relation(fields: [veiculoId], references: [id])
+  Veiculo   Veiculo? @relation(fields: [veiculoId], references: [id])
+  veiculoId Int?
 
   @@map("fotoVeiculo")
 }
