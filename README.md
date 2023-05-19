@@ -33,4 +33,6 @@ Veículos:<br/>
 ![image](https://github.com/marcoscl84/vehicles-api/assets/66912112/53668970-7c97-4dae-a35d-5fa809744e17)
 ![image](https://github.com/marcoscl84/vehicles-api/assets/66912112/3132d11c-52a2-4d1a-8c60-085c096cbe4b)
 
-
+===== GETALL =====>  "/vehicles"<br/>
+Rota de obtenção de todos os resultados. Veículos e suas respectivas imagens:<br/>
+![image](https://github.com/marcoscl84/vehicles-api/assets/66912112/7fbc65ce-83ce-475d-8c1c-115da5a2cd64)
