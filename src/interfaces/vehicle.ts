@@ -1,5 +1,3 @@
-import { FotoVeiculo } from "@prisma/client";
-
 export interface Vehicle {
   id?: number;
   placa: string;

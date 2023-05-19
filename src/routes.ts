@@ -12,7 +12,7 @@ const createVehicleController = new CreateVehicleController();
 const deleteVehicleController = new DeleteVehicleController();
 
 // CREATE VEHICLE
-router.post("/vehicle", upload.array("images", 5), async (req, res) => {
+router.post("/vehicles/create", upload.array("images", 5), async (req, res) => {
   if (!req.files) {
     throw new Error("No image received");
   }
