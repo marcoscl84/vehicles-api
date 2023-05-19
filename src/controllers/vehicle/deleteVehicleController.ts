@@ -2,7 +2,7 @@ import { DeleteVehicleModel } from "../../models/vehicle/deleteVehicleModel";
 import { DeleteImageModel } from "../../models/images/deleteImageModel";
 
 export class DeleteVehicleController {
-  async execute(id: number) {
+  async handle(id: number) {
     const deleteVehicleModel = new DeleteVehicleModel();
     const deleteImageModel = new DeleteImageModel();
 

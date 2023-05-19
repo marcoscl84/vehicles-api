@@ -3,6 +3,7 @@ import multer, { Multer } from "multer";
 
 import { CreateVehicleController } from "./controllers/vehicle/createVehicleController";
 import { DeleteVehicleController } from "./controllers/vehicle/deleteVehicleController";
+import { GetallVehicleController } from "./controllers/vehicle/getallVehicleController";
 
 const router = express.Router();
 // const upload = multer({ dest: "uploads/" });
@@ -10,6 +11,7 @@ const upload: Multer = multer();
 
 const createVehicleController = new CreateVehicleController();
 const deleteVehicleController = new DeleteVehicleController();
+const getallVehicleController = new GetallVehicleController();
 
 // CREATE VEHICLE
 router.post("/vehicles/create", upload.array("images", 5), async (req, res) => {
@@ -39,19 +41,29 @@ router.post("/vehicles/create", upload.array("images", 5), async (req, res) => {
       .status(200)
       .json({ vehicle, message: "Successfully registered vehicle!" });
   } catch (error) {
-    res.status(400).json({ error: "Cannot register vehicle..." });
+    res.status(500).json({ error: "Cannot register vehicle..." });
   }
 });
 
 // DELETE VEHICLE
-router.delete("/vehicle/delete/:id", async (req, res) => {
+router.delete("/vehicles/delete/:id", async (req, res) => {
   const data = parseInt(req.params.id);
 
   try {
-    const vehicle = await deleteVehicleController.execute(data);
+    const vehicle = await deleteVehicleController.handle(data);
     res.status(200).json({ vehicle });
   } catch (error) {
-    res.status(400).json({ error: "Cannot delete vehicle" });
+    res.status(500).json({ error: "Cannot delete vehicle" });
+  }
+});
+
+// GET ALL VEHICLES
+router.get("/vehicles", async (req, res) => {
+  try {
+    const vehicles = await getallVehicleController.handle();
+    res.status(200).json({ vehicles });
+  } catch (error) {
+    res.status(500).json({ error: "Cannot find any vehicle" });
   }
 });
 
