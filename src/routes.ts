@@ -4,6 +4,7 @@ import multer, { Multer } from "multer";
 import { CreateVehicleController } from "./controllers/vehicle/createVehicleController";
 import { DeleteVehicleController } from "./controllers/vehicle/deleteVehicleController";
 import { GetallVehicleController } from "./controllers/vehicle/getallVehicleController";
+import { GetVehicleByIdController } from "./controllers/vehicle/getVehicleByIdController";
 
 const router = express.Router();
 // const upload = multer({ dest: "uploads/" });
@@ -12,6 +13,7 @@ const upload: Multer = multer();
 const createVehicleController = new CreateVehicleController();
 const deleteVehicleController = new DeleteVehicleController();
 const getallVehicleController = new GetallVehicleController();
+const getVehicleByIdController = new GetVehicleByIdController();
 
 // CREATE VEHICLE
 router.post("/vehicles/create", upload.array("images", 5), async (req, res) => {
@@ -62,6 +64,24 @@ router.get("/vehicles", async (req, res) => {
   try {
     const vehicles = await getallVehicleController.handle();
     res.status(200).json({ vehicles });
+  } catch (error) {
+    res.status(500).json({ error: "Cannot find any vehicle" });
+  }
+});
+
+// GET VEHICLE BY ID
+router.get("/vehicles/:id", async (req, res) => {
+  const data = parseInt(req.params.id);
+
+  try {
+    const vehicle = await getVehicleByIdController.handle(data);
+
+    if (vehicle === null) {
+      res.status(500).json({ error: "Cannot find any vehicle" });
+      return;
+    }
+
+    res.status(200).json({ vehicle });
   } catch (error) {
     res.status(500).json({ error: "Cannot find any vehicle" });
   }
