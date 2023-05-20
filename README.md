@@ -43,3 +43,17 @@ Rota de obtenção de um veículo específico, com suas respectivas images atrav
 O id é enviado como parâmetro na rota, passa pela camada Controller e é enviado à camada Model, onde faz a busca no banco de dados do veículo de acordo com sua id.
 ![image](https://github.com/marcoscl84/vehicles-api/assets/66912112/7a56b68b-296e-49af-b3ef-a55ddbb5f9ad)
 
+===== UPDATE =====>  "/vehicles/update/:id"<br/>
+Rota de alteração de dados de um veículo.
+Ao alterar algum dado no front-end, deve ser recebido pela rota, os dados originais que não foram alteredos, os novos dados e um array de imagens com as que permeneceram, com as novas e excluídas as deletadas ou alteradas. No momento em que os dados entram na rota, são enviados à camada Controller, onde os dados são convertidos para os respectivos tipos, logo em seguida é chamada a camada Model de exclusão de imagens, onde são excluídas todas as imagens que tem o id do veículo cadatrado no campo de relacaionamento. Após, é feita a altereção de todos os dados na tabela Veiculo (dados não alterados são recadastrados e os alterados, cadastrados no lugar dos antigos).
+Após isto, as novas imagens (novas imagens e antigas que não foram alteradas, nem excluídas) são enviadas para a camada Model de cadastro de imagens, vinculadas ao id do veículo, através do campo de relacionamento.<br/>
+
+Antes do update:<br/>
+![image](https://github.com/marcoscl84/vehicles-api/assets/66912112/6140c0bf-cb87-46c9-9c7e-b1be4958f91d)
+
+Update:<br/>
+![image](https://github.com/marcoscl84/vehicles-api/assets/66912112/749afa42-23e7-41e4-a10f-e0676f23dfc7)
+
+Depois do update:<br/>
+![image](https://github.com/marcoscl84/vehicles-api/assets/66912112/fe684402-5aa8-413f-afb4-f6a456c7ee83)
+
