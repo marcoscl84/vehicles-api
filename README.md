@@ -1,10 +1,9 @@
 ﻿# vehicles-api
 
-Início do projeto instalando dependênias:
+Início do projeto instalando dependências:
 - Express, Multer, Prisma
 
 Logo em seguida, criei uma imagem no Docker para hospedar o banco de dados MySQL.
-
 
 ===== CREATE =====> "/vehicles/create"<br/>
 Rota de cadastro do veículo foi criada, com população do banco relacionando a tabela Veículo e Imagens. Na rota há a importação e conversão das imagens para binário e envio junto com o corpo ao Controller. 
