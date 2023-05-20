@@ -1,4 +1,3 @@
-import { Vehicle } from "../../interfaces/vehicle";
 import { client } from "../../services/prismaClient";
 
 export class GetVehicleByIdModel {

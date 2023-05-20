@@ -1,9 +1,21 @@
 import { client } from "../../services/prismaClient";
+import { Vehicle } from "../../interfaces/vehicle";
 
-export class GetallVehicleModel {
-  async get() {
+export class UpdateVehicleModel {
+  async update(data: Vehicle) {
     try {
-      const vehicle = await client.veiculo.findMany({
+      const vehicle = await client.veiculo.update({
+        where: {
+          id: data.id,
+        },
+        data: {
+          placa: data.placa,
+          rastrado: data.rastradoBool,
+          altura: data.alturaNum,
+          comprimento: data.comprimentoNum,
+          largura: data.larguraNum,
+          cubagem: data.cubagemNum,
+        },
         select: {
           id: true,
           placa: true,
@@ -12,13 +24,6 @@ export class GetallVehicleModel {
           comprimento: true,
           largura: true,
           cubagem: true,
-          created_at: true,
-          FotoVeiculo: {
-            select: {
-              id: true,
-              file: true,
-            },
-          },
         },
       });
 
