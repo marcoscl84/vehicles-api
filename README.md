@@ -36,3 +36,10 @@ Veículos:<br/>
 ===== GETALL =====>  "/vehicles"<br/>
 Rota de obtenção de todos os resultados. Veículos e suas respectivas imagens:<br/>
 ![image](https://github.com/marcoscl84/vehicles-api/assets/66912112/7fbc65ce-83ce-475d-8c1c-115da5a2cd64)
+
+
+===== GET UNIQUE =====>  "/vehicles/:id"<br/>
+Rota de obtenção de um veículo específico, com suas respectivas images através de seu id.
+O id é enviado como parâmetro na rota, passa pela camada Controller e é enviado à camada Model, onde faz a busca no banco de dados do veículo de acordo com sua id.
+![image](https://github.com/marcoscl84/vehicles-api/assets/66912112/7a56b68b-296e-49af-b3ef-a55ddbb5f9ad)
+
