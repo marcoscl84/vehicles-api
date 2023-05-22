@@ -56,3 +56,13 @@ Update:<br/>
 Depois do update:<br/>
 ![image](https://github.com/marcoscl84/vehicles-api/assets/66912112/fe684402-5aa8-413f-afb4-f6a456c7ee83)
 
+===== DEPLOY DO PROJETO PARA PRODUÇÃO =====
+- Conectar no Railway (railway.app) com as credenciais do GitHub
+- Create a new project
+- Seleionar o repositório (nesse projeto, como o repositório é publico, o Railway não aceita o deploy)
+- Criar a instancia do DB: New -> Database -> Add MySQL -> Connect -> copiar DATABASE_URL
+- Add variables: Variables -> Variable Referenc - > DATABASE_URL -> Add
+- Rodar o comando "npx prisma generate" no terminal
+- Settings -> Generate Domain
+
+Obs.: Este é um repositório público, portanto o deploy no Railway não é permitido. Para fazer o deploy para o cliente, basta ter o projeto como Privado no GitHub e seguir os passos acima.
